@@ -1,0 +1,72 @@
+## 📝 **Task One: Coding — Data Model Unification**
+
+### 🎯 **Objective**
+
+Develop a Python-based solution to reconcile and unify **two distinct data models** provided in JSON format, simulating a real-world consulting problem where client data exists in different structures.
+
+### 📚 **What I Learned**
+
+* How to interpret and align inconsistent data sources.
+* How to build **Python scripts** for data parsing, cleaning, and merging.
+* Practical exposure to **data reconciliation** challenges faced by technology consultants.
+* The importance of producing clean, standardized outputs from inconsistent inputs.
+
+---
+
+### 💻 **What I Did**
+
+✅ Analyzed two different JSON data models representing similar information in varying formats.
+✅ Wrote a **Python algorithm** to:
+
+* Read both JSON files.
+* Extract relevant fields from each structure.
+* Normalize data keys and formats.
+* Merge the datasets into a single, unified structure.
+
+✅ Ensured the final output met a **standardized schema** suitable for downstream processes or client reporting.
+
+---
+
+### 🔍 **Sample Python Snippet**
+
+```python
+import json
+
+with open('data-1.json', 'r', encoding='utf-8') as file1, open('data-2.json', 'r', encoding='utf-8') as file2:
+    data1 = json.load(file1)
+    data2 = json.load(file2)
+
+# Normalize and unify
+unified_data = []
+
+for entry in data1 + data2:
+    unified_entry = {
+        'id': entry.get('id') or entry.get('identifier'),
+        'name': entry.get('name') or entry.get('fullName'),
+        'email': entry.get('emailAddress') or entry.get('email'),
+        'phone': entry.get('contactNumber') or entry.get('phone')
+    }
+    unified_data.append(unified_entry)
+
+with open('unified_data.json', 'w', encoding='utf-8') as outfile:
+    json.dump(unified_data, outfile, indent=4)
+
+print("Unified data saved to unified_data.json.")
+```
+
+---
+
+### 📂 **Deliverable**
+
+**`unified_data.json`**
+
+> A clean, consistent JSON dataset combining fields from both original models, ready for use in reporting, analysis, or system migration.
+
+---
+
+### 🔑 **Key Skills Applied**
+
+* Python (JSON parsing, file handling, data manipulation)
+* Data modeling & transformation
+* Problem-solving in data consistency
+* Simulating client-driven technology consulting tasks
